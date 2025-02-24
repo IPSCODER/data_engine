@@ -48,8 +48,8 @@ const Login = () => {
           
       const onSubmit = (data) => {
         // alert(JSON.stringify(data, null, 2));
-        const email = users.find((item) => item.email == data.email)
-        const user = users.find((item) => item.email == data.email && item.password == data.password )
+        const email = users.find((item) => item.email === data.email)
+        const user = users.find((item) => item.email === data.email && item.password === data.password )
         if(!email){
           alert("user not found")
         }else if(!user){
@@ -68,14 +68,12 @@ const Login = () => {
         <h2 className="title">Sign In</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="form">
           <div className="form-group" >
-            <label>Email</label>
-            <Input type="email" {...register("email", { required: "Email is required" })} />
+            <Input type="email" label={"Email"} {...register("email", { required: "Email is required" })} />
             {errors.email && <p className="error-text">{errors.email.message}</p>}
           </div>
 
           <div className="form-group" >
-            <label>Password</label>
-            <Input type="password" {...register("password", { required: "Password is required" })} />
+            <Input type="password" label={"Password"} {...register("password", { required: "Password is required" })} />
             {errors.password && <p className="error-text">{errors.password.message}</p>}
           </div>
           

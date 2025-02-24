@@ -52,7 +52,7 @@ const Register = () => {
 
   const onSubmit = (data) => {
     // alert(JSON.stringify(data, null, 2));
-    const user = users.find((item) => item.email == data.email);
+    const user = users.find((item) => item.email === data.email);
     if(user){
       alert("Email already exists")
     }else{
@@ -69,20 +69,18 @@ const Register = () => {
         <h2 className="title">Sign Up</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="form">
           <div className="form-group" >
-            <label>Full Name</label>
-            <Input {...register("fullName", { required: "Full Name is required" })} />
+            <Input label={"Full Name"}  {...register("fullName", { required: "Full Name is required" })} />
             {errors.fullName && <p className="error-text">{errors.fullName.message}</p>}
           </div>
           
           <div className="form-group" >
-            <label>Email</label>
-            <Input type="email" {...register("email", { required: "Email is required" })} />
+            
+            <Input type="email" label={"Email"}  {...register("email", { required: "Email is required" })} />
             {errors.email && <p className="error-text">{errors.email.message}</p>}
           </div>
           
           <div className="form-group" >
-            <label>Role</label>
-            <Select {...register("role", { required: "Role is required" })}>
+            <Select label={"Role"} {...register("role", { required: "Role is required" })}>
               <option value="">Select Role</option>
               <option value="Admin">Admin</option>  
               <option value="User">User</option>
@@ -93,14 +91,14 @@ const Register = () => {
           {role === "Admin" && (
             <>
               <div className="form-group" >
-                <label>Admin Code</label>
-                <Input {...register("adminCode", { required: "Admin Code is required" })} />
+                
+                <Input label={"Admin Code"} {...register("adminCode", { required: "Admin Code is required" })} />
                 {errors.adminCode && <p className="error-text">{errors.adminCode.message}</p>}
               </div>
               
               <div className="form-group" >
-                <label>Admin Permissions</label>
-                <Input {...register("adminPermissions", { required: "Admin Permissions are required" })} />
+                
+                <Input label={"Admin Permissions"} {...register("adminPermissions", { required: "Admin Permissions are required" })} />
                 {errors.adminPermissions && <p className="error-text">{errors.adminPermissions.message}</p>}
               </div>
             </>
@@ -109,22 +107,22 @@ const Register = () => {
           {role === "User" && (
             <>
               <div className="form-group" >
-                <label>Preferences</label>
-                <Input {...register("preferences", { required: "Preferences are required" })} />
+                
+                <Input label={"Preferences"} {...register("preferences", { required: "Preferences are required" })} />
                 {errors.preferences && <p className="error-text">{errors.preferences.message}</p>}
               </div>
               
               <div className="form-group" >
-                <label>Subscription Plan</label>
-                <Input {...register("subscriptionPlan", { required: "Subscription Plan is required" })} />
+                
+                <Input label={"Subscription Plan"} {...register("subscriptionPlan", { required: "Subscription Plan is required" })} />
                 {errors.subscriptionPlan && <p className="error-text">{errors.subscriptionPlan.message}</p>}
               </div>
             </>
           )}
 
           <div className="form-group" >
-            <label>Password</label>
-            <Input type="password" {...register("password", { required: "Password is required" })} />
+            
+            <Input label={"Password"} type="password" {...register("password", { required: "Password is required" })} />
             {errors.password && <p className="error-text">{errors.password.message}</p>}
           </div>
           
